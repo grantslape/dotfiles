@@ -9,3 +9,4 @@ brew install the_silver_searcher
 brew install wget
 brew install zsh
 brew install z
+brew install fabric
