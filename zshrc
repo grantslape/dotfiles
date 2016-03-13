@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mh"
+ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,6 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# May need to change from Ross' gem at some point
 export PATH="/Users/rossmckelvie/.rvm/gems/ruby-2.1.2/bin:/Users/rossmckelvie/.rvm/gems/ruby-2.1.2@global/bin:/Users/rossmckelvie/.rvm/rubies/ruby-2.1.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/rossmckelvie/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -69,7 +70,7 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+ export SSH_KEY_PATH="~/.ssh/github_rsa"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
