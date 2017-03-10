@@ -12,6 +12,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -58,12 +59,11 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-export EDITOR='vim'
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='st'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,3 +88,20 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 source /usr/local/share/zsh/site-functions/_aws
 source ~/.extra
+
+# This depends on you having repos named upstream and dev.
+fetch-rebase() {
+	git fetch upstream;
+	git checkout master && git pull --rebase upstream master
+	git checkout qa && git pull --rebase upstream qa
+	git checkout dev && git pull --rebase upstream dev
+	git push origin master && git push origin qa && git push origin dev
+}
+
+wanip() {
+	dig +short myip.opendns.com @resolver1.opendns.com
+}
+
+commitall() {
+    git add . && git commit  -m $1
+}
