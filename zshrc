@@ -89,7 +89,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /usr/local/share/zsh/site-functions/_aws
 source ~/.extra
 
-# This depends on you having repos named upstream and dev.
+# This depends on you having repos named upstream and origin, where origin is 
+# your personal fork.  It's also shitty and fragile.
 fetch-rebase() {
 	git fetch upstream;
 	git checkout master && git pull --rebase upstream master
