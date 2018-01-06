@@ -8,6 +8,7 @@
     ~/.zsh-custom: zsh/
 
 - shell: [
-        [./setup-scripts/brew.sh, "Installing brew kegs"],
+        ["git submodule update --init --recursive", "Installing submodules"],
+	[./setup-scripts/brew.sh, "Installing brew kegs"],
         [./setup-scripts/cask.sh, "Installing brew casks"]
     ]
