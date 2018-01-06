@@ -6,7 +6,6 @@ brew install brew-cask
 brew cask install alfred
 brew cask install google-chrome
 brew cask install istat-menus
-brew cask install nosleep
 brew cask install slack
 brew cask install spotify
 brew cask install the-unarchiver
