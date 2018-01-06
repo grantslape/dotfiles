@@ -10,3 +10,7 @@ brew install wget
 brew install zsh
 brew install z
 brew install fabric
+brew tap homebrew/homebrew-php
+brew install php70
+brew install php70-xdebug
+brew install composer
