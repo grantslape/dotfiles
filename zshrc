@@ -60,10 +60,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 
 # Favor scripts
-# source /Users/grantslape/favor/sites/hangar/fv_developer_bash_scripts.sh
-
-# misc scripts, got a weird fork error from these
-# source /Users/grantslape/extra.sh
+source /Users/grantslape/favor/sites/hangar/fv_developer_bash_scripts.sh
+source ~/extra.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -80,7 +78,7 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/github_rsa"
+export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
