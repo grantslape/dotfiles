@@ -7,10 +7,11 @@
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
     ~/.zsh-custom: zsh/
+    ~/.extra.sh: extra.sh
 
 - shell: [
     ["git submodule update --init --recursive", "Installing submodules"],
-	["cp ./zsh/plugins/* oh-my-zsh/plugins/", "Copying custom zsh plugins"],
+    ["cp -r ./zsh/plugins/* ./oh-my-zsh/plugins/", "Copying custom zsh plugins"],
     [./setup-scripts/brew.sh, "Installing brew kegs"],
     [./setup-scripts/cask.sh, "Installing brew casks"]
     ]

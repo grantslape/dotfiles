@@ -57,7 +57,6 @@ plugins=(brew bundler common-aliases gem git osx rvm sublime zsh-syntax-highligh
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
-source ~/favor/extra.sh
 source $ZSH/oh-my-zsh.sh
 
 # Favor scripts
@@ -92,3 +91,4 @@ export SSH_KEY_PATH="~/.ssh/github_rsa"
 
 export PATH="/usr/local/sbin:$PATH"
 alias aa="~/.aws_mfa_auth.sh"
+alias gam="/Users/grantslape/bin/gam/gam"
