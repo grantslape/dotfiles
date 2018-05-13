@@ -91,3 +91,6 @@ export PATH="/usr/local/sbin:$PATH"
 alias aa="~/.aws_mfa_auth.sh"
 alias gam="/Users/grantslape/bin/gam/gam"
 alias gtkwave="/Applications/gtkwave.app/Contents/Resources/bin/gtkwave"
+
+# Path for Z
+. /usr/local/etc/profile.d/z.sh
