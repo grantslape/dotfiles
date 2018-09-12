@@ -14,8 +14,6 @@ frb() {
 	git pull --rebase $myRemote dev
 	git checkout qa
 	git pull --rebase $myRemote qa
-	git checkout release
-	git pull --rebase $myRemote release
 
 	git checkout $source_branch
 	git stash pop
@@ -37,9 +35,9 @@ greset() {
 	git reset --hard $myRemote/dev
 	git checkout qa
 	git reset --hard $myRemote/qa
-	git checkout release
-	git reset --hard $myRemote/release
 
 	git checkout $source_branch
 	git stash pop
 }
+
+alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
