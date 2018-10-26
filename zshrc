@@ -67,11 +67,12 @@ source ~/.extra.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ "$SSH_CONNECTION" ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='code'
-fi
+# if [[ "$SSH_CONNECTION" ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='code'
+# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -89,7 +90,8 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 export PATH="/usr/local/sbin:$PATH"
 alias aa="~/.aws_mfa_auth.sh"
 alias gam="/Users/grantslape/bin/gam/gam"
-alias gtkwave="/Applications/gtkwave.app/Contents/Resources/bin/gtkwave"
+alias dcd="docker-compose up -d"
+unalias mysql
 
 # Path for Z
 . /usr/local/etc/profile.d/z.sh
