@@ -62,6 +62,8 @@ source $ZSH/oh-my-zsh.sh
 # Favor scripts
 source /Users/grantslape/favor/sites/hangar/fv_developer_bash_scripts.sh
 source ~/.extra.sh
+source ~/.keys.sh
+source ~/favor/local-dev-env/init.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -86,12 +88,35 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 #
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# Maven
+export PATH=/opt/apache-maven-3.6.0/bin:$PATH
+# GPG
+export GPG_TTY=$(tty)
 
+# Some path shimming
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/$USER/bin:$PATH"
+
+# PHP installation broke so install from brew
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+
+# Custom stuff
+export COMPOSER_AUTH=$(cat ~/.composer/auth.json)
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home"
 alias aa="~/.aws_mfa_auth.sh"
-alias gam="/Users/grantslape/bin/gam/gam"
-alias dcd="docker-compose up -d"
+alias gam="~/bin/gam/gam"
+alias dcu="docker-compose up --build"
 unalias mysql
 
 # Path for Z
 . /usr/local/etc/profile.d/z.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# added by travis gem
+[ -f /Users/grantslape/.travis/travis.sh ] && source /Users/grantslape/.travis/travis.sh
