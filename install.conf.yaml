@@ -7,7 +7,7 @@
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
     ~/.zsh-custom: zsh/
-    ~/.extra.sh: extra.sh
+    ~/.scripts.sh: scripts.sh
 
 - shell: [
     ["git submodule update --init --recursive", "Installing submodules"],

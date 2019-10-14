@@ -40,6 +40,7 @@ greset() {
 	git stash pop
 }
 
-alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
-alias eros="ssh ghs21@eros.cs.txstate.edu"
-alias zeus="ssh ghs21@zeus.cs.txstate.edu"
+# login to aws vault
+av() {
+	aws-vault login $1 -s | pbcopy
+}

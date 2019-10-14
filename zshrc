@@ -61,7 +61,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Favor scripts
 source /Users/grantslape/favor/sites/hangar/fv_developer_bash_scripts.sh
-source ~/.extra.sh
+# Other extras
+source ~/.scripts.sh
 source ~/.keys.sh
 source ~/favor/local-dev-env/init.sh
 
@@ -88,8 +89,10 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 #
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # Maven
 export PATH=/opt/apache-maven-3.6.0/bin:$PATH
+
 # GPG
 export GPG_TTY=$(tty)
 
@@ -102,6 +105,7 @@ export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 
 # Go
+export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin
 
 # Custom stuff
@@ -111,6 +115,8 @@ alias aa="~/.aws_mfa_auth.sh"
 alias gam="~/bin/gam/gam"
 alias dcu="docker-compose up --build"
 unalias mysql
+
+alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
 # Path for Z
 . /usr/local/etc/profile.d/z.sh
