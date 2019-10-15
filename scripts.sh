@@ -44,3 +44,6 @@ greset() {
 av() {
 	aws-vault login $1 -s | pbcopy
 }
+
+# Composer for Favor
+export COMPOSER_AUTH=$(cat ~/.composer/auth.json)

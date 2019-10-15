@@ -1,6 +1,7 @@
 [user]
 	name = Grant Slape
 	email = me@grantslape.com
+	signingkey = 1121014F2044DC82
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
@@ -13,3 +14,7 @@
 	required = true
 [color]
 	ui = auto
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
