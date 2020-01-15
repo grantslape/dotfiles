@@ -52,7 +52,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew bundler common-aliases gem git osx rvm sublime zsh-syntax-highlighting)
+plugins=(aws brew bundler common-aliases docker docker-compose git osx zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -61,7 +61,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 
 # Favor scripts
-source /Users/grantslape/favor/sites/hangar/fv_developer_bash_scripts.sh
+source ~/favor/sites/hangar/fv_developer_bash_scripts.sh
 # Other extras
 source ~/.scripts.sh
 source ~/.keys.sh
@@ -108,10 +108,15 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 # Go
 export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 
 # Custom stuff
 export COMPOSER_AUTH=$(cat ~/.composer/auth.json)
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home"
+
+# AWS
+export AWS_ASSUME_ROLE_TTL=1h
+
 alias aa="~/.aws_mfa_auth.sh"
 alias gam="~/bin/gam/gam"
 alias dcu="docker-compose up --build"
