@@ -1,5 +1,5 @@
 # Fetch and rebase local branches off master branch
-frb() {
+function frb() {
 	source_branch=$(git symbolic-ref --short -q HEAD)
 	echo "\e[34mSetting current branch to $source_branch\e[37m"
 
@@ -20,7 +20,7 @@ frb() {
 }
 
 # Reset all local dev branches
-greset() {
+function greset() {
 	source_branch=$(git symbolic-ref --short -q HEAD)
 	echo "\e[34mSetting current branch to $source_branch\e[37m"
 	qa="env/qa"
@@ -42,22 +42,50 @@ greset() {
 	git stash pop
 }
 
-av() {
+function av() {
 	aws-vault login $1
 }
 
 # login to aws vault
 # usage: av <PROFILE>
 # ex: av ts-staff
-avs() {
+function avs() {
 	aws-vault login $1 -s | pbcopy
 }
 
 # aws-vault exec cmd
 # usage: ave <PROFILE> <COMMAND>
 # ex: ave ts-staff make deploy
-ave() {
+function ave() {
 	aws-vault exec $1 -- ${@:2}
+}
+
+# init terraform and apply
+# usage: tfa <PROFILE>
+#ex: tfa devops-staff
+function tfa() {
+	ave $1 terraform init
+	ave $1 terraform apply
+}
+function tfa13() {
+	ave $1 /usr/local/bin/terraform0.13 init
+	ave $1 /usr/local/bin/terraform0.13-beta3 apply
+}
+
+function c() {
+	code $1
+}
+
+# install precommit
+function pci() {
+	pre-commit install
+	pre-commit install --hook-type pre-push
+	pre-commit install --hook-type commit-msg
+}
+
+# git status
+function gs() {
+	git status
 }
 
 # Composer for Favor

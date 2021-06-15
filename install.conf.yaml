@@ -12,6 +12,5 @@
 - shell: [
     ["git submodule update --init --recursive", "Installing submodules"],
     ["cp -r ./zsh/plugins/* ./oh-my-zsh/plugins/", "Copying custom zsh plugins"],
-    [./setup-scripts/brew.sh, "Installing brew kegs"],
-    [./setup-scripts/cask.sh, "Installing brew casks"]
+    [./setup-scripts/brew.sh, "Installing brew kegs"]
     ]

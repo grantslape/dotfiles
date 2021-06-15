@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/grantslape/.oh-my-zsh
 
@@ -18,7 +25,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 # Update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -106,9 +113,10 @@ export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 
 # Go
-export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:$HOME/go/bin
+export GOPRIVATE="github.com/favordelivery"
+export GOROOT="/usr/local/Cellar/go/1.16.4/libexec"
 
 # Custom stuff
 export COMPOSER_AUTH=$(cat ~/.composer/auth.json)
@@ -117,7 +125,6 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 # AWS
 export AWS_ASSUME_ROLE_TTL=1h
 
-alias aa="~/.aws_mfa_auth.sh"
 alias gam="~/bin/gam/gam"
 alias dcu="docker-compose up --build"
 unalias mysql
@@ -129,9 +136,13 @@ alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
 # added by travis gem
 [ -f /Users/grantslape/.travis/travis.sh ] && source /Users/grantslape/.travis/travis.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
