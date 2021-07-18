@@ -11,7 +11,7 @@ brew install zsh
 brew install z
 brew install terraform
 brew install go
-brew install powerlevel10k
+brew install romkatv/powerlevel10k/powerlevel10k
 brew install pre-commit
 
 # Core / Personal
@@ -27,3 +27,7 @@ brew install --cask iterm2
 brew install --cask macvim
 brew install --cask visual-studio-code
 brew install homebrew/cask/docker
+
+# Fonts
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code-nerd-font

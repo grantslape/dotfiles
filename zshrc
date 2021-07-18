@@ -67,12 +67,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
-# Favor scripts
-source ~/favor/sites/hangar/fv_developer_bash_scripts.sh
 # Other extras
 source ~/.scripts.sh
 source ~/.keys.sh
-source ~/favor/local-dev-env/init.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -89,7 +86,7 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
 
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -115,12 +112,7 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
-export GOPRIVATE="github.com/favordelivery"
 export GOROOT="/usr/local/Cellar/go/1.16.4/libexec"
-
-# Custom stuff
-export COMPOSER_AUTH=$(cat ~/.composer/auth.json)
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home"
 
 # AWS
 export AWS_ASSUME_ROLE_TTL=1h
@@ -140,9 +132,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f /Users/grantslape/.travis/travis.sh ] && source /Users/grantslape/.travis/travis.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

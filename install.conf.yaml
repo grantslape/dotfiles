@@ -8,9 +8,11 @@
     ~/.gitconfig: gitconfig
     ~/.zsh-custom: zsh/
     ~/.scripts.sh: scripts.sh
+    ~/.p10k.zsh: p10k.zsh
 
 - shell: [
     ["git submodule update --init --recursive", "Installing submodules"],
     ["cp -r ./zsh/plugins/* ./oh-my-zsh/plugins/", "Copying custom zsh plugins"],
+    ["git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k", "installing p10k"],
     [./setup-scripts/brew.sh, "Installing brew kegs"]
     ]

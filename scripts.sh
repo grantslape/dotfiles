@@ -42,34 +42,12 @@ function greset() {
 	git stash pop
 }
 
-function av() {
-	aws-vault login $1
-}
-
-# login to aws vault
-# usage: av <PROFILE>
-# ex: av ts-staff
-function avs() {
-	aws-vault login $1 -s | pbcopy
-}
-
-# aws-vault exec cmd
-# usage: ave <PROFILE> <COMMAND>
-# ex: ave ts-staff make deploy
-function ave() {
-	aws-vault exec $1 -- ${@:2}
-}
-
 # init terraform and apply
 # usage: tfa <PROFILE>
 #ex: tfa devops-staff
 function tfa() {
 	ave $1 terraform init
 	ave $1 terraform apply
-}
-function tfa13() {
-	ave $1 /usr/local/bin/terraform0.13 init
-	ave $1 /usr/local/bin/terraform0.13-beta3 apply
 }
 
 function c() {
@@ -82,11 +60,3 @@ function pci() {
 	pre-commit install --hook-type pre-push
 	pre-commit install --hook-type commit-msg
 }
-
-# git status
-function gs() {
-	git status
-}
-
-# Composer for Favor
-export COMPOSER_AUTH=$(cat ~/.composer/auth.json)
