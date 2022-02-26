@@ -59,7 +59,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws brew bundler common-aliases docker docker-compose git osx zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(aws brew bundler common-aliases docker docker-compose git macos zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -104,10 +104,7 @@ export GPG_TTY=$(tty)
 # Some path shimming
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/$USER/bin:$PATH"
-
-# PHP installation broke so install from brew
-export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Go
 export PATH=$PATH:/usr/local/go/bin
@@ -124,7 +121,7 @@ unalias mysql
 alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
 # Path for Z
-. /usr/local/etc/profile.d/z.sh
+. /opt/homebrew/etc/profile.d/z.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

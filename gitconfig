@@ -1,7 +1,7 @@
 [user]
 	name = Grant Slape
 	email = me@grantslape.com
-	signingkey = 8DD37A20F2CBC5BF
+	signingkey = B93E18E1C515C600
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
