@@ -1,53 +1,7 @@
-# Fetch and rebase local branches off master branch
-function frb() {
-	source_branch=$(git symbolic-ref --short -q HEAD)
-	echo "\e[34mSetting current branch to $source_branch\e[37m"
-
-	git remote -v
-	echo "Remote to rebase from: "
-	read -n myRemote
-	git stash
-	git fetch $myRemote
-	git checkout master
-	git pull --rebase $myRemote master
-	git checkout dev
-	git pull --rebase $myRemote dev
-	git checkout qa
-	git pull --rebase $myRemote qa
-
-	git checkout $source_branch
-	git stash pop
-}
-
 # Reset all local dev branches
-function greset() {
+function gdel() {
 	source_branch=$(git symbolic-ref --short -q HEAD)
-	echo "\e[34mSetting current branch to $source_branch\e[37m"
-	qa="env/qa"
-	dev="env/dev"
-
-	git remote -v
-	echo "Remote to rebase from: "
-	read -n myRemote
-	git stash
-	git fetch $myRemote
-	git checkout master
-	git reset --hard $myRemote/master
-	git checkout $dev
-	git reset --hard $myRemote/$dev
-	git checkout $qa
-	git reset --hard $myRemote/$qa
-
-	git checkout $source_branch
-	git stash pop
-}
-
-# init terraform and apply
-# usage: tfa <PROFILE>
-#ex: tfa devops-staff
-function tfa() {
-	ave $1 terraform init
-	ave $1 terraform apply
+	git branch | grep -v "main\$" | grep -v "$source_branch\$" | xargs git branch -D
 }
 
 function c() {
@@ -59,4 +13,25 @@ function pci() {
 	pre-commit install
 	pre-commit install --hook-type pre-push
 	pre-commit install --hook-type commit-msg
+}
+
+# Sign
+function sign() {
+	# Sign the key
+    gpg --sign-key $1
+    # Export the newly signed key
+    FILE="${1}-signed-by-$(whoami).asc"
+    gpg --armor --export $1 > $FILE
+    echo "Saved ${FILE}"
+}
+
+# Reset GPG if issues occur
+gpg-reset() {
+  if [[ "$(killall -s gpg-agent 2>&1)" == "kill"* ]]; then
+    sudo killall gpg-agent
+  fi
+  gpg-agent --homedir ${HOME}/.gnupg --daemon --enable-ssh-support
+  gpg --card-status
+  export "GPG_TTY=$(tty)"
+  export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 }

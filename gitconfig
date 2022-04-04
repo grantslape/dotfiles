@@ -1,7 +1,7 @@
 [user]
-	name = Grant Slape
-	email = me@grantslape.com
-	signingkey = 8DD37A20F2CBC5BF
+	name = grantslape
+	email = grant@unit410.com
+	signingkey = 9EA7D0C0F95E33C876BD4C7AD7703B7D862DA2EC
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
@@ -9,9 +9,10 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [color]
 	ui = auto
 [commit]
@@ -20,5 +21,18 @@
 	program = gpg
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
 [pull]
 	rebase = true
+[alias]
+	logs = log --show-signature
+[remote "origin"]
+    fetch = +refs/tags/*:refs/tags/*
+    push =  +refs/tags/*:refs/tags/*
+[core]
+	excludesfile=~/.gitignore
+[init]
+	defaultBranch = main
+[tag]
+	forceSignAnnotated = true

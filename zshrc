@@ -12,7 +12,6 @@ export ZSH=/Users/grantslape/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -59,11 +58,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws brew bundler common-aliases docker docker-compose git osx zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(brew bundler common-aliases docker docker-compose git macos zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/Users/$USER/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
@@ -85,15 +84,15 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/id_ed25519"
-
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# I hate grep
+alias grep="rg --max-columns 1000 --max-columns-preview"
 
 # Maven
 export PATH=/opt/apache-maven-3.6.0/bin:$PATH
@@ -102,22 +101,21 @@ export PATH=/opt/apache-maven-3.6.0/bin:$PATH
 export GPG_TTY=$(tty)
 
 # Some path shimming
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/Users/$USER/bin:$PATH"
-
-# PHP installation broke so install from brew
-export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+# export PATH="/usr/local/sbin:$PATH"
+# export PATH="/Users/$USER/bin:$PATH"
 
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
-export GOROOT="/usr/local/Cellar/go/1.16.4/libexec"
+export GOROOT="/usr/local/Cellar/go/1.18/libexec"
+export GOPRIVATE="gitlab.com/u4hq"
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
 
 # AWS
 export AWS_ASSUME_ROLE_TTL=1h
 
-alias gam="~/bin/gam/gam"
 alias dcu="docker-compose up --build"
 unalias mysql
 
@@ -133,3 +131,36 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# start gpg properly w/ ssh support
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+# sig-utils
+export PATH="${PATH}:/Users/$USER/code/sig-utils/utils"
+
+# Lotus
+export PATH="${PATH}:/Users/$USER/code/lotus"
+
+# CS testing
+export PATH="${PATH}:/usr/local/MacGPG2/bin"
+
+# Alias common commands so you're always verifying 
+# history before accessing production
+alias ansible-playbook="sig-ansible-playbook"
+alias terraform="sig-terraform"
+alias make="sig-make"
+alias git="sig-git"
+
+alias todo="todo.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/grantslape/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/grantslape/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/grantslape/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/grantslape/google-cloud-sdk/completion.zsh.inc'; fi
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
