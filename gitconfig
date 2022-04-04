@@ -28,8 +28,8 @@
 [alias]
 	logs = log --show-signature
 [remote "origin"]
-    fetch = +refs/tags/*:refs/tags/*
-    push =  +refs/tags/*:refs/tags/*
+   fetch = +refs/tags/*:refs/tags/*
+   push =  +refs/tags/*:refs/tags/*
 [core]
 	excludesfile=~/.gitignore
 [init]

@@ -11,7 +11,6 @@ brew install zsh
 brew install z
 brew install terraform
 brew install go
-brew install romkatv/powerlevel10k/powerlevel10k
 brew install pre-commit
 
 # Core / Personal

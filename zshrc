@@ -63,12 +63,12 @@ plugins=(brew bundler common-aliases docker docker-compose git macos zsh-complet
 # User configuration
 
 export PATH="/Users/$USER/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/opt/homebrew/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
 # Other extras
 source ~/.scripts.sh
-source ~/.keys.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,12 +117,11 @@ export PATH=$PATH:$HOME/.cargo/bin
 export AWS_ASSUME_ROLE_TTL=1h
 
 alias dcu="docker-compose up --build"
-unalias mysql
 
 alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
 # Path for Z
-. /usr/local/etc/profile.d/z.sh
+. /opt/homebrew/etc/profile.d/z.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -132,10 +131,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# start gpg properly w/ ssh support
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
 # sig-utils
 export PATH="${PATH}:/Users/$USER/code/sig-utils/utils"
 
@@ -144,6 +139,10 @@ export PATH="${PATH}:/Users/$USER/code/lotus"
 
 # CS testing
 export PATH="${PATH}:/usr/local/MacGPG2/bin"
+
+# start gpg properly w/ ssh support
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 # Alias common commands so you're always verifying 
 # history before accessing production

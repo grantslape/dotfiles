@@ -12,6 +12,8 @@
 
 - shell: [
     ["git submodule update --init --recursive", "Installing submodules"],
+    ["git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k", "Installing p10k"],
+    ["git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions", "Installing autosuggestions"],
     ["cp -r ./zsh/plugins/* ./oh-my-zsh/plugins/", "Copying custom zsh plugins"],
     ["cp -r ./zsh/themes/* ./oh-my-zsh/plugins/", "Copying custom zsh themes"],
     [./setup-scripts/brew.sh, "Installing brew kegs"]
