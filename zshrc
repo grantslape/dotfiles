@@ -107,7 +107,7 @@ export GPG_TTY=$(tty)
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
-export GOROOT="/usr/local/Cellar/go/1.18/libexec"
+export GOROOT="/opt/homebrew/Cellar/go/1.18/libexec"
 export GOPRIVATE="gitlab.com/u4hq"
 
 # Rust
@@ -153,13 +153,13 @@ alias git="sig-git"
 
 alias todo="todo.sh"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/grantslape/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/grantslape/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/grantslape/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/grantslape/google-cloud-sdk/completion.zsh.inc'; fi
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -3,6 +3,7 @@
 brew doctor
 
 # Install useful binaries
+brew install coreutils
 brew install curl
 brew install node
 brew install the_silver_searcher
@@ -12,6 +13,8 @@ brew install z
 brew install terraform
 brew install go
 brew install pre-commit
+brew install rg
+brew install git-lfs
 
 # Core / Personal
 brew install --cask alfred
