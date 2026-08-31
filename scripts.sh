@@ -42,14 +42,6 @@ function greset() {
 	git stash pop
 }
 
-# init terraform and apply
-# usage: tfa <PROFILE>
-#ex: tfa devops-staff
-function tfa() {
-	ave $1 terraform init
-	ave $1 terraform apply
-}
-
 function c() {
 	code $1
 }

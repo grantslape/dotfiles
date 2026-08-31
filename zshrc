@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/grantslape/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -59,7 +59,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws brew bundler common-aliases docker docker-compose git macos zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(aws asdf brew bundler common-aliases docker docker-compose git macos zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -69,7 +69,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Other extras
 source ~/.scripts.sh
-source ~/.keys.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -95,9 +94,6 @@ export SSH_KEY_PATH="~/.ssh/id_ed25519"
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Maven
-export PATH=/opt/apache-maven-3.6.0/bin:$PATH
-
 # GPG
 export GPG_TTY=$(tty)
 
@@ -106,17 +102,13 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/$USER/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Go
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
-export GOROOT="/usr/local/Cellar/go/1.16.4/libexec"
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # AWS
 export AWS_ASSUME_ROLE_TTL=1h
 
-alias gam="~/bin/gam/gam"
 alias dcu="docker-compose up --build"
-unalias mysql
 
 alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
@@ -125,8 +117,8 @@ alias crawl="ssh -C -i ~/.ssh/cao_key -l joshua crawl.akrasiac.org"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# added by travis gem
-[ -f /Users/grantslape/.travis/travis.sh ] && source /Users/grantslape/.travis/travis.sh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# rust
+. "$HOME/.cargo/env"
