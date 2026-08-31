@@ -1,3 +1,8 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - clean: ['~']
 
 - link:
@@ -9,12 +14,32 @@
     ~/.zsh-custom: zsh/
     ~/.scripts.sh: scripts.sh
     ~/.p10k.zsh: p10k.zsh
+    ~/.ssh/config:
+      path: ssh/config
+      force: true
+    ~/.config/karabiner/karabiner.json:
+      path: config/karabiner/karabiner.json
+      force: true
+    ~/.config/opencode/opencode.jsonc:
+      path: config/opencode/opencode.jsonc
+      force: true
+    ~/.oh-my-zsh/custom/plugins/zsh-completions:
+      path: zsh/plugins/zsh-completions
+      force: true
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
+      path: zsh/plugins/zsh-syntax-highlighting
+      force: true
 
-- shell: [
-    ["rm -rf oh-my-zsh && git submodule update --init --recursive", "Installing submodules"],
-    ["cp -r ./zsh/plugins/* ./oh-my-zsh/plugins/", "Copying custom zsh plugins"],
-    ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", "Installing brew"],
-    ["git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions", "installing zsh-autosuggestions"],
-    ["git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k", "installing p10k"],
-    ["brew bundle", "Installing brew packages"]
-    ]
+- shell:
+    - command: 'command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+      description: Installing Homebrew
+      stdin: true
+    - command: 'test -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/.git" || git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"'
+      description: Installing zsh-autosuggestions
+    - command: 'test -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/.git" || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"'
+      description: Installing Powerlevel10k
+    - command: ./scripts/create-ssh-key
+      description: Creating workstation SSH key
+      stdin: true
+    - command: brew bundle --file=Brewfile
+      description: Installing Brew packages
