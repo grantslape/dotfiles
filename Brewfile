@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "romkatv/powerlevel10k", trusted: true
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
@@ -24,8 +23,6 @@ brew "pre-commit"
 brew "python@3.11"
 # Generic machine emulator and virtualizer
 brew "qemu"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Tool for creating isolated virtual python environments
@@ -36,8 +33,6 @@ brew "wget"
 brew "ykman"
 # Tracks most-used directories to make cd smarter
 brew "z"
-# UNIX shell (command interpreter)
-brew "zsh"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Application launcher and productivity software
@@ -59,8 +54,6 @@ cask "istat-menus"
 cask "iterm2"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
-# Text editor
-cask "macvim-app"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
