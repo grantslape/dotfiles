@@ -40,5 +40,9 @@
       stdin: true
     - command: brew bundle --file=Brewfile
       description: Installing Brew packages
-    - command: 'curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y'
-      description: Install Rust
+    - command: gpg --batch --import me@grantslape.com.pub.asc
+      description: Importing YubiKey GPG public key
+    - command: >-
+        command -v rustup >/dev/null 2>&1 ||
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      description: Installing Rust
