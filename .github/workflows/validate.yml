@@ -19,6 +19,9 @@ jobs:
       - name: Validate installer scripts
         run: bash -n install scripts/create-ssh-key
 
+      - name: Verify installer accepts zero arguments under Bash and Zsh
+        run: tests/test-install-zsh.sh "$GITHUB_WORKSPACE"
+
       - name: Validate Zsh configuration
         run: zsh -n zshrc scripts.sh p10k.zsh
 
